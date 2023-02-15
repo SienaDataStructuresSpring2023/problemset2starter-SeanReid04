@@ -19,6 +19,21 @@ public class StockHolding
         
     }
     
+    public char getSymbol(){
+        return symbol;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public int getNumShares(){
+        return numShares;
+    }
+    
+    public double getPrice(){
+        return price;
+    }
     
     @Override
     public String toString()

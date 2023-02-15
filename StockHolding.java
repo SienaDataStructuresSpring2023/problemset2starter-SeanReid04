@@ -35,6 +35,15 @@ public class StockHolding
         return price;
     }
     
+    public void byShares(int numShares, double price){
+        this.numShares += numShares;
+        this.price = price;
+    }
+    
+    public void sellShares(){
+        
+    }
+    
     @Override
     public String toString()
     {

@@ -1,8 +1,8 @@
 /**
- * Write a description of class Asset here.
+ * This class creates a stockholding object along with methods in order to manipulate the object in a desired manner 
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sean Reid
+ * @version Spring 2023
  */
 public class StockHolding
 {
@@ -11,6 +11,9 @@ public class StockHolding
     private int numShares;
     private double price;
     
+    /**
+     * Creates a stockholding object with four parameters 
+     */
     public StockHolding(char symbol, String name, int numShares, double price){
         this.symbol = symbol;
         this.name = name;

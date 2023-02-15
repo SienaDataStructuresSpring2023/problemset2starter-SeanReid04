@@ -40,8 +40,14 @@ public class StockHolding
         this.price = price;
     }
     
-    public void sellShares(){
-        
+    public double sellShares(int soldShares){
+        if (numShares >= soldShares){
+            numShares = numShares - soldShares;
+            return price * soldShares;
+             
+        } else {
+            return 0;
+        }
     }
     
     @Override

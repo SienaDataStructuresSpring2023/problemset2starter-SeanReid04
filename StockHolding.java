@@ -11,6 +11,13 @@ public class StockHolding
     private int numShares;
     private double price;
     
+    public StockHolding(char symbol, String name, int numShares, double price){
+        this.symbol = symbol;
+        this.name = name;
+        this.numShares = numShares;
+        this.price = price;
+        
+    }
     
     
     @Override

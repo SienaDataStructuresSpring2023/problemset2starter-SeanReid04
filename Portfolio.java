@@ -14,6 +14,9 @@ public class Portfolio
     
     private double lifeP;
     
+    /**
+     * Constructs and returns a Portfolio object initializing all the instance variables
+     */
     public Portfolio(){
         stocks = new ArrayList<StockHolding>();
         lifeI = 0;

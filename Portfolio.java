@@ -51,6 +51,11 @@ public class Portfolio
     }
     
     public double buyStock(String symbol, String name, int numShares, double price){
+        for (int i = 0; i < stocks.size(); i++){
+            if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
+                stocks.get(i).buyShares(numShares, price);
+            }
+        }
         return -1;    
     }
     

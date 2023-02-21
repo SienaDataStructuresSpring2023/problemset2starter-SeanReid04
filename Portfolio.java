@@ -10,6 +10,15 @@ public class Portfolio
 {
     private ArrayList<StockHolding> stocks;
     
+    private double lifeI;
+    
+    private double lifeP;
+    
+    public Portfolio(){
+        stocks = new ArrayList<StockHolding>();
+        lifeI = 0;
+        lifeP = 0;
+    }
 
     
     @Override

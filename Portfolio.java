@@ -41,6 +41,19 @@ public class Portfolio
         return lifeP;
     }
     
+    private int getIndex(String symbol){
+        for (int i = 0; i < stocks.size(); i++){
+            if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public double buyStock(String symbol, String name, int numShares, double price){
+        return -1;    
+    }
+    
     @Override
     public String toString()
     {

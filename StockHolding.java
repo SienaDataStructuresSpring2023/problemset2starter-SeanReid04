@@ -6,15 +6,20 @@
  */
 public class StockHolding
 {
-    private char symbol;
+    private String symbol;
     private String name;
     private int numShares;
     private double price;
     
     /**
      * Creates a stockholding object with four parameters 
+     * 
+     * @param symbol the symbol for the stock
+     * @param name the name of the stock
+     * @param numShares the number shares owned for this stock
+     * @param price the price of the stock per share
      */
-    public StockHolding(char symbol, String name, int numShares, double price){
+    public StockHolding(String symbol, String name, int numShares, double price){
         this.symbol = symbol;
         this.name = name;
         this.numShares = numShares;
@@ -22,27 +27,59 @@ public class StockHolding
         
     }
     
-    public char getSymbol(){
+    /**
+     * Returns the symbol of the stock
+     * 
+     * @return symbol the symbol for the stock
+     */
+    public String getSymbol(){
         return symbol;
     }
     
+    /**
+     * Returns the name of the stock
+     * 
+     * @return name the name of the stock
+     */
     public String getName(){
         return name;
     }
     
+    /**
+     * Returns the number of shares owned for this stock
+     * 
+     * @return numShares the number shares owned for this stock
+     */
     public int getNumShares(){
         return numShares;
     }
     
+    /**
+     * Returns the price of this stock per share
+     * 
+     * @return price the price of the stock per share
+     */
     public double getPrice(){
         return price;
     }
     
-    public void byShares(int numShares, double price){
+    /**
+     * Buys more shares of the stock and updates the amount of shares owned and the price of the stock
+     * 
+     * @param numShares the number shares owned for this stock
+     * @param price the price of the stock per share
+     */
+    public void buyShares(int numShares, double price){
         this.numShares += numShares;
         this.price = price;
     }
     
+    /**
+     * Returns the profit made from selling shares if unable to sell shares then 0 is returned
+     * 
+     * @param soldShares the amount of shares to sell
+     * @return the amount of profit made from selling the shares
+     */
     public double sellShares(int soldShares){
         if (numShares >= soldShares){
             numShares = numShares - soldShares;
@@ -53,6 +90,11 @@ public class StockHolding
         }
     }
     
+    /**
+     * Returns an output string formatted nicely
+     * 
+     * @return an output string formatted nicely
+     */
     @Override
     public String toString()
     {

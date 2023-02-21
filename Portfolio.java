@@ -20,6 +20,23 @@ public class Portfolio
         lifeP = 0;
     }
 
+    /**
+     * Returns the lifetime investment for this stock
+     * 
+     * @return lifeI the lifetime investment for this stock
+     */
+    public double getLifeI(){
+        return lifeI;
+    }
+    
+    /**
+     * Returns the lifetime payout for this stock
+     * 
+     * @return lifeP the lifetime payout for this stock
+     */
+    public double getLifeP(){
+        return lifeP;
+    }
     
     @Override
     public String toString()

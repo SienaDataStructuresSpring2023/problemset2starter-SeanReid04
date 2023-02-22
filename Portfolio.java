@@ -54,9 +54,29 @@ public class Portfolio
         for (int i = 0; i < stocks.size(); i++){
             if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
                 stocks.get(i).buyShares(numShares, price);
+                return numShares * price;
             }
+        
         }
-        return -1;    
+        StockHolding st = new StockHolding(symbol, name, numShares, price);
+        stocks.add(st);
+        lifeI = numShares * price;
+        return lifeI;    
+    }
+    
+    public double sellStock(String symbol, int numShares){
+        double cost = 0;
+        for (int i = 0; i < stocks.size(); i++){
+            if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
+                cost = stocks.get(i).sellShares(numShares);
+                if (stocks.get(i).getNumShares() == 0){
+                    stocks.remove(i);
+                }
+                lifeP += cost;
+            }
+        
+        }
+        return cost;
     }
     
     @Override

@@ -4,7 +4,7 @@ import java.util.ArrayList;
  * Write a description of class Portfolio here.
  *
  * @author Sean Reid
- * @version (a version number or a date)
+ * @version Spring 2023
  */
 public class Portfolio
 {
@@ -41,6 +41,12 @@ public class Portfolio
         return lifeP;
     }
     
+    /**
+     * Returns the index of the ArrayList the matches the symbol passed in
+     * 
+     * @param symbol the symbol for the stock
+     * @return the index of the ArrayList the matches the symbol passed in or -1 if the symbol is not found
+     */
     private int getIndex(String symbol){
         for (int i = 0; i < stocks.size(); i++){
             if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
@@ -50,6 +56,15 @@ public class Portfolio
         return -1;
     }
     
+    /**
+     * Buys more shares of the stock if stock is already owned, otherwise the stock is bought and added to the ArrayList, also returns the cost of buying the stock
+     * 
+     * @param symbol the symbol for the stock
+     * @param name the name of the stock
+     * @param numShares the number shares owned for this stock
+     * @param price the price of the stock per share
+     * @return the cost of buying of the stock
+     */
     public double buyStock(String symbol, String name, int numShares, double price){
         for (int i = 0; i < stocks.size(); i++){
             if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
@@ -64,6 +79,13 @@ public class Portfolio
         return lifeI;    
     }
     
+    /**
+     * Returns the profit made from selling shares if unable to sell shares then 0 is returned
+     * 
+     * @param symbol the symbol for the stock
+     * @param numShares the number shares owned for this stock
+     * @return the amount of profit made from selling the shares
+     */
     public double sellStock(String symbol, int numShares){
         double cost = 0;
         for (int i = 0; i < stocks.size(); i++){
@@ -79,6 +101,11 @@ public class Portfolio
         return cost;
     }
     
+    /**
+     * Returns the current value of the stock portfolio
+     * 
+     * @return currentV the current value of the stock portfolio
+     */
     public double getCurrentValue(){
         double currentV = 0;
         for (int i =0; i < stocks.size(); i++){
@@ -89,6 +116,11 @@ public class Portfolio
         return currentV;
     }
     
+    /**
+     * Returns an output string formatted nicely
+     * 
+     * @return an output string formatted nicely
+     */
     @Override
     public String toString()
     {

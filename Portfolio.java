@@ -9,11 +9,11 @@ import java.util.ArrayList;
 public class Portfolio
 {
     private ArrayList<StockHolding> stocks;
-    
+
     private double lifeI;
-    
+
     private double lifeP;
-    
+
     /**
      * Constructs and returns a Portfolio object initializing all the instance variables
      */
@@ -31,7 +31,7 @@ public class Portfolio
     public double getLifeI(){
         return lifeI;
     }
-    
+
     /**
      * Returns the lifetime payout for this stock
      * 
@@ -40,7 +40,7 @@ public class Portfolio
     public double getLifeP(){
         return lifeP;
     }
-    
+
     /**
      * Returns the index of the ArrayList the matches the symbol passed in
      * 
@@ -55,7 +55,7 @@ public class Portfolio
         }
         return -1;
     }
-    
+
     /**
      * Buys more shares of the stock if stock is already owned, otherwise the stock is bought and added to the ArrayList, also returns the cost of buying the stock
      * 
@@ -66,19 +66,20 @@ public class Portfolio
      * @return the cost of buying of the stock
      */
     public double buyStock(String symbol, String name, int numShares, double price){
-        for (int i = 0; i < stocks.size(); i++){
-            if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
-                stocks.get(i).buyShares(numShares, price);
-                return numShares * price;
-            }
-        
+
+        if (getIndex(symbol) != -1){
+            stocks.get(getIndex(symbol)).buyShares(numShares, price);
+
+        } else {
+            StockHolding st = new StockHolding(symbol, name, numShares, price);
+            stocks.add(st);
         }
-        StockHolding st = new StockHolding(symbol, name, numShares, price);
-        stocks.add(st);
+
+        
         lifeI = numShares * price;
         return lifeI;    
     }
-    
+
     /**
      * Returns the profit made from selling shares if unable to sell shares then 0 is returned
      * 
@@ -88,19 +89,19 @@ public class Portfolio
      */
     public double sellStock(String symbol, int numShares){
         double cost = 0;
-        for (int i = 0; i < stocks.size(); i++){
-            if (stocks.get(i).getSymbol().equalsIgnoreCase(symbol)){
-                cost = stocks.get(i).sellShares(numShares);
-                if (stocks.get(i).getNumShares() == 0){
-                    stocks.remove(i);
+        
+            if (getIndex(symbol) != -1){
+                cost = stocks.get(getIndex(symbol)).sellShares(numShares);
+                if (stocks.get(getIndex(symbol)).getNumShares() == 0){
+                    stocks.remove(getIndex(symbol));
                 }
                 lifeP += cost;
             }
+
         
-        }
         return cost;
     }
-    
+
     /**
      * Returns the current value of the stock portfolio
      * 
@@ -115,7 +116,7 @@ public class Portfolio
         }
         return currentV;
     }
-    
+
     /**
      * Returns an output string formatted nicely
      * 
@@ -127,8 +128,8 @@ public class Portfolio
         //DO NOT EDIT THIS METHOD.
         StringBuffer sb = new StringBuffer();
         sb.append(String.format("%6s%25s%10s%15s%15s%n", 
-                 "Symbol", "Name", "Shares", "@Price", "Total"));
-                sb.append("-----------------------------------------------------------------------\n");
+                "Symbol", "Name", "Shares", "@Price", "Total"));
+        sb.append("-----------------------------------------------------------------------\n");
 
         for(StockHolding s : stocks){
             sb.append(s.toString());

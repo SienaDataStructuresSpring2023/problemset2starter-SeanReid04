@@ -31,10 +31,10 @@ public class PortfolioReport
             String[] data = line.split(",");
             if(data[0].equals("B")){
                 //Buy the stock for the portfolio.
-                //double lifeInvestment = p.buyStock(line);
+                double lifeI = p.buyStock(data[1], data[2], Double.parseDouble(data[3]), Double.parseDouble(data[4]));
             } else {
                 //Sell the stock from the portfolio.
-                //double lifePayout = p.sellStock(line);
+                p.sellStock(data[1], Double.parseDouble(data[2]));
             }
         }
 
